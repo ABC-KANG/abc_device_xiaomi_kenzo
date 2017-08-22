@@ -298,6 +298,7 @@ PRODUCT_PACKAGES += \
     hostapd \
     wificond \
     wpa_supplicant \
+    wifilogd \
     wpa_supplicant.conf
 
 # Override density
