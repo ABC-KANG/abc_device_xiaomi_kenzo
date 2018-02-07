@@ -307,6 +307,10 @@ PRODUCT_PACKAGES += \
     XiaomiParts \
     XiaomiDoze
 
+# Offline charging
+PRODUCT_PACKAGES += \
+    chargeonlymode
+
 # setup dalvik vm and hwui configs.
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 #$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
