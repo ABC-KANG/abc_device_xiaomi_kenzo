@@ -178,9 +178,6 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVdecHevc \
     libOmxVenc
-	
-# QPerformance
-PRODUCT_BOOT_JARS += QPerformance
 
 # Misc dependency packages
 PRODUCT_PACKAGES += \
@@ -228,6 +225,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+
+# Power HAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service-qti
 
 # Ramdisk
 PRODUCT_PACKAGES += \
