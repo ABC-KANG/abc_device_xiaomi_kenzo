@@ -95,6 +95,7 @@ service perfd /vendor/bin/perfd
     user root
     group root readproc
     socket perfd seqpacket 0666 root system
+    disabled
     writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /vendor/bin/thermal-engine
