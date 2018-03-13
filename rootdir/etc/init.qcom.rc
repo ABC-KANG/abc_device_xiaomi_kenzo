@@ -133,6 +133,10 @@ on boot
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
+    #create ipacm log dir
+    mkdir /data/vendor/ipa 0770 radio radio
+    chmod 0770 /data/vendor/ipa
+
     setprop wifi.interface wlan0
 
 #   Define TCP buffer sizes for various networks
@@ -217,8 +221,6 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/misc/camera 0770 camera camera
     setprop persist.camera.stats.test 5
-
-    mkdir /data/misc/ipa 0700 net_admin net_admin
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
@@ -438,6 +440,13 @@ service netmgrd /vendor/bin/netmgrd
     disabled
     writepid /dev/cpuset/system-background/tasks
     setenv LD_LIBRARY_PATH /system/vendor/lib64/legacy
+
+service ipacm /system/vendor/bin/ipacm
+    class main
+    user radio
+    group radio inet
+    writepid /dev/cpuset/system-background/tasks
+    seclabel u:r:ipacm:s0
 
 service qti /vendor/bin/qti
     class main

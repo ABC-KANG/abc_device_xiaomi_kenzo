@@ -142,6 +142,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
     $(LOCAL_PATH)/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/gf318m.idc
 
+# IPA Manager
+PRODUCT_PACKAGES += \
+    libipanat \
+    liboffloadhal \
+    ipacm \
+    IPACM_cfg.xml
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Atmel_maXTouch_Touchscreen.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Atmel_maXTouch_Touchscreen.kl \
