@@ -147,17 +147,16 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/sched_mostly_idle_freq 1017600
     write /sys/devices/system/cpu/cpu4/sched_mostly_idle_freq 0
 
-    # Set LMK
+    # Setup adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/debug_level 0
-    write /sys/module/lowmemorykiller/parameters/adj_max_shift 354
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
-    write /sys/module/lowmemorykiller/parameters/enable_process_reclaim 1
-    write /sys/module/lowmemorykiller/parameters/min_score_adj 354
-    write /sys/module/lowmemorykiller/parameters/per_swap_size 1024
-    write /sys/module/lowmemorykiller/parameters/pressure_min 10
-    write /sys/module/lowmemorykiller/parameters/pressure_max 70
-    write /sys/module/lowmemorykiller/parameters/swap_opt_eff 30
+
+    # Setup process-reclaim
+    write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
+    write /sys/module/process_reclaim/parameters/pressure_min 10
+    write /sys/module/process_reclaim/parameters/per_swap_size 1024
+    write /sys/module/process_reclaim/parameters/swap_opt_eff 30
+    write /sys/module/process_reclaim/parameters/pressure_max 70
 
     # Set Thermal
     write /sys/module/msm_thermal/core_control/enabled 0
