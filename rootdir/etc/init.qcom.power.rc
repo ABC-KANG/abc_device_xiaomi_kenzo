@@ -53,6 +53,9 @@ on property:sys.boot_completed=1
     write /sys/class/devfreq/cpubw/bw_hwmon/io_percent 20
     write /sys/class/devfreq/cpubw/bw_hwmon/guard_band_mbps 30
 
+    # Changes to optimize performance and power consumption
+    write /proc/sys/kernel/sched_freq_inc_notify 200000
+
     # Disable thermal
     write /sys/module/msm_thermal/core_control/enabled 0
 
@@ -68,15 +71,15 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 99
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_lowspeed_load 10
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 806400
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "70 691200:77 1017600:70 1305600:85 1401600:88 1440000:95"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 80000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 45000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/powersave_bias 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 35000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate_screenoff 50000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 40000
 
     # configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive
@@ -90,15 +93,15 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 99
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_lowspeed_load 10
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1056000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/align_windows 0
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "83 883200:84 998400:85 1113600:84 1190400:86 1305600:85 1612800:83 1843200:95"
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/powersave_bias 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate_screenoff 50000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack 80000
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack 40000
 
     # Set Swappiness
     write /proc/sys/vm/swappiness 60
