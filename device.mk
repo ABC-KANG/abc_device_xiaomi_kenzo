@@ -70,18 +70,20 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audiod \
-    audio.a2dp.default \
     audio.primary.msm8952 \
+    audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    tinymix
+    libaudio-resampler \
+    libtinycompress
 
 PRODUCT_PACKAGES += \
-    libaudio-resampler \
     libqcompostprocbundle \
+    libvolumelistener \
     libqcomvisualizer \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    libqcomvoiceprocessingdescriptors \
+    tinymix
 
 # Bluetooth
 PRODUCT_PACKAGES += \
