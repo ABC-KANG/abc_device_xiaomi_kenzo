@@ -175,17 +175,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
 
-# Media
+# OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libdivxdrmdecrypt \
-    libdashplayer \
-    libstagefrighthw \
+    libextmedia_jni \
+    libOmxAacEnc \
+    libOmxAmrEnc \
     libOmxCore \
-    libmm-omxcore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxSwVencHevc \
     libOmxVdec \
-    libOmxVdecHevc \
-    libOmxVenc
+    libOmxVenc \
+    libstagefrighthw
 
 # Misc dependency packages
 PRODUCT_PACKAGES += \
