@@ -26,17 +26,13 @@ on boot
     write /proc/sys/kernel/sched_boost 1
 
 on property:sys.boot_completed=1
-    # Set I/O Scheduler settings
-    write /sys/block/mmcblk0/queue/read_ahead_kb 256
-    write /sys/block/mmcblk1/queue/read_ahead_kb 256
-
     # HMP scheduler (big.Little cluster related) settings
     write /proc/sys/kernel/sched_boost 0
     write /proc/sys/kernel/sched_upmigrate 98
     write /proc/sys/kernel/sched_downmigrate 85
 
     # android background processes are set to nice 10. Never schedule these on the a57s.
-    write /proc/sys/kernel/sched_upmigrate_min_nice 8
+    write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
     write /proc/sys/kernel/sched_window_stats_policy 2
     write /proc/sys/kernel/sched_ravg_hist_size 5
@@ -64,7 +60,7 @@ on property:sys.boot_completed=1
     restorecon -R /sys/devices/system/cpu # must restore after interactive
     chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 691200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1440000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "0 691200:20000 806400:24000 1190400:38000"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fastlane 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fastlane_threshold 50
@@ -73,7 +69,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 806400
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "70 691200:77 1017600:70 1305600:85 1401600:88 1440000:95"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "70 691200:77 1017600:70 1305600:85 1401600:92"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 45000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/powersave_bias 1
@@ -86,7 +82,7 @@ on property:sys.boot_completed=1
     restorecon -R /sys/devices/system/cpu # must restore after interactive
     chmod 666 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 883200
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1843200
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1804800
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay "30000 1056000:10000 1305600:30000"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/fastlane 0
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/fastlane_threshold 50
@@ -95,7 +91,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1056000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/align_windows 0
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "83 883200:84 998400:85 1113600:84 1190400:86 1305600:85 1612800:83 1843200:95"
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "83 883200:84 998400:85 1113600:84 1190400:86 1305600:85 1612800:83 1804800:95"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/powersave_bias 1
@@ -166,12 +162,6 @@ on property:sys.boot_completed=1
 
     # enable Audio High Performance Mode 
     write /sys/module/snd_soc_msm8x16_wcd/parameters/high_perf_mode 1
-
-    # Arch Power
-    write /sys/kernel/sched/arch_power 1
-
-    # Disable Gentle Fair Sleepers
-    write /sys/kernel/sched/gentle_fair_sleepers 0
 
 on charger
     # Start thermal engine
