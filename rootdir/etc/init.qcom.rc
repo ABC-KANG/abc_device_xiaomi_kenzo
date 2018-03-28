@@ -367,7 +367,7 @@ on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
 
-service qcom-c_main-sh /system/bin/sh /init.class_main.sh
+service qcom-c_main-sh /vendor/bin/sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
@@ -406,7 +406,7 @@ service tftp_server /vendor/bin/tftp_server
    group root wakelock 3012
    seclabel u:r:rfs_access:s0
 
-service hciattach /system/bin/sh /vendor/etc/init.qcom.bt.sh
+service hciattach /vendor/bin/sh /vendor/bin/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
@@ -428,7 +428,7 @@ service port-bridge /vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     oneshot
     seclabel u:r:port-bridge:s0
 
-service qcom-post-boot /system/bin/sh /vendor/etc/init.qcom.post_boot.sh
+service qcom-post-boot /vendor/bin/sh /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
     disabled
@@ -506,7 +506,7 @@ service loc_launcher /vendor/bin/loc_launcher
     group gps inet oem_2901 wifi
     seclabel u:r:location:s0
 
-service fm_dl /system/bin/sh /vendor/etc/init.qcom.fm.sh
+service fm_dl /vendor/bin/sh /vendor/bin/init.qcom.fm.sh
     class late_start
     user system
     group system
@@ -514,7 +514,7 @@ service fm_dl /system/bin/sh /vendor/etc/init.qcom.fm.sh
     oneshot
     seclabel u:r:qti_init_shell:s0
 
-service qcom-sh /system/bin/sh /init.qcom.sh
+service qcom-sh /vendor/bin/sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     oneshot
@@ -565,20 +565,6 @@ service msm_irqbal_lb /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance_l
     group root
     disabled
     seclabel u:r:msm_irqbalanced:s0
-
-# Coresight early boot service
-service cs-early-boot /system/bin/sh /persist/coresight/qdss.agent.sh early-boot /vendor/etc/init.qcom.debug.sh
-    class core
-    user root
-    oneshot
-    seclabel u:r:qti_init_shell:s0
-
-# Coresight post boot servive
-service cs-post-boot /system/bin/sh /persist/coresight/qdss.agent.sh
-    user root
-    disabled
-    oneshot
-    seclabel u:r:qti_init_shell:s0
 
 service time_daemon /vendor/bin/time_daemon
     class main
