@@ -342,10 +342,12 @@ service qcomsysd /vendor/bin/qcom-system-daemon
     class main
     user root
     group root diag
+    seclabel u:r:qcomsysd:s0
 
 service ssr_setup /vendor/bin/ssr_setup
     oneshot
     disabled
+    seclabel u:r:ssr_setup:s0
 
 on property:persist.sys.ssr.restart_level=*
     start ssr_setup
@@ -424,6 +426,7 @@ service port-bridge /vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     group radio system inet
     disabled
     oneshot
+    seclabel u:r:port-bridge:s0
 
 service qcom-post-boot /system/bin/sh /vendor/etc/init.qcom.post_boot.sh
     class late_start
@@ -495,6 +498,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 service cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     oneshot
+    seclabel u:r:wcnss_service:s0
 
 service loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
