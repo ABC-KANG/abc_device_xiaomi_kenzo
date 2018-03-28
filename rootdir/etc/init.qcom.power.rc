@@ -59,7 +59,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     restorecon -R /sys/devices/system/cpu # must restore after interactive
     chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 691200
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 400000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "0 691200:20000 806400:24000 1190400:38000"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fastlane 0
@@ -69,7 +69,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 806400
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "70 691200:77 1017600:70 1305600:85 1401600:92"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "60 400000:62 691200:70 806400:76 1017600:81 1190400:86 1305600:89 1382400:91 1401600:94"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 45000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/powersave_bias 1
