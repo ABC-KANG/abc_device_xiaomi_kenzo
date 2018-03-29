@@ -69,3 +69,4 @@
 /system/vendor/bin/init\.qcom\.fm\.sh                                 u:object_r:qti_init_shell_exec:s0
 /system/vendor/bin/init\.qcom\.post_boot\.sh                          u:object_r:qti_init_shell_exec:s0
 /system/vendor/bin/init\.qcom\.usb\.sh                                u:object_r:qti_init_shell_exec:s0
+
