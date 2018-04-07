@@ -319,6 +319,13 @@ PRODUCT_PACKAGES += \
     textclassifier.smartselection.zh.model \
     textclassifier.smartselection.zh-Hant.model
 
+# VR
+PRODUCT_PACKAGES += \
+    vr.msm8952
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
+
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
