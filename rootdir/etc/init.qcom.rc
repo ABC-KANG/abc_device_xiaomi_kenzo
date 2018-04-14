@@ -342,12 +342,10 @@ service qcomsysd /vendor/bin/qcom-system-daemon
     class main
     user root
     group root diag
-    seclabel u:r:qcomsysd:s0
 
 service ssr_setup /vendor/bin/ssr_setup
     oneshot
     disabled
-    seclabel u:r:ssr_setup:s0
 
 on property:persist.sys.ssr.restart_level=*
     start ssr_setup
@@ -371,7 +369,6 @@ service qcom-c_main-sh /vendor/bin/sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
-    seclabel u:r:qti_init_shell:s0
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -384,13 +381,11 @@ service cnd /vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:cnd:s0
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
-    seclabel u:r:irsc_util:s0
 
 service rmt_storage /vendor/bin/rmt_storage
     class core
@@ -398,13 +393,11 @@ service rmt_storage /vendor/bin/rmt_storage
     group root system wakelock
     shutdown critical
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:rmt_storage:s0
 
 service tftp_server /vendor/bin/tftp_server
    class main
    user root
    group root wakelock 3012
-   seclabel u:r:rfs_access:s0
 
 service hciattach /vendor/bin/sh /vendor/bin/init.qcom.bt.sh
     class late_start
@@ -412,7 +405,6 @@ service hciattach /vendor/bin/sh /vendor/bin/init.qcom.bt.sh
     group bluetooth net_bt_admin
     disabled
     oneshot
-    seclabel u:r:qti_init_shell:s0
 
 on property:bluetooth.hciattach=true
     start hciattach
@@ -426,14 +418,12 @@ service port-bridge /vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     group radio system inet
     disabled
     oneshot
-    seclabel u:r:port-bridge:s0
 
 service qcom-post-boot /vendor/bin/sh /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
     disabled
     oneshot
-    seclabel u:r:qti_init_shell:s0
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /vendor/bin/qmuxd
@@ -442,14 +432,12 @@ service qmuxd /vendor/bin/qmuxd
     group radio audio bluetooth gps nfc oem_2901
     disabled
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:qmuxd:s0
 
 service netmgrd /vendor/bin/netmgrd
     class main
     disabled
     group root wifi wakelock radio inet oem_2901
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:netmgrd:s0
     setenv LD_LIBRARY_PATH /system/vendor/lib64/legacy
 
 service ipacm /system/vendor/bin/ipacm
@@ -457,7 +445,6 @@ service ipacm /system/vendor/bin/ipacm
     user radio
     group radio inet
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:ipacm:s0
 
 service sensors /vendor/bin/sensors.qcom
     class late_start
@@ -465,7 +452,6 @@ service sensors /vendor/bin/sensors.qcom
     group root wakelock 3011
     disabled
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:sensors:s0
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -498,13 +484,11 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 service cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     oneshot
-    seclabel u:r:wcnss_service:s0
 
 service loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet oem_2901 wifi
-    seclabel u:r:location:s0
 
 service fm_dl /vendor/bin/sh /vendor/bin/init.qcom.fm.sh
     class late_start
@@ -512,13 +496,11 @@ service fm_dl /vendor/bin/sh /vendor/bin/init.qcom.fm.sh
     group system
     disabled
     oneshot
-    seclabel u:r:qti_init_shell:s0
 
 service qcom-sh /vendor/bin/sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     oneshot
-    seclabel u:r:qti_init_shell:s0
 
 
 on property:sys.boot_completed=1
@@ -538,7 +520,6 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
 service charger /sbin/chargeonlymode
     class charger
     group system graphics
-    seclabel u:r:charger:s0
 
 service qbcharger /sbin/chargeonlymode -m 1
     disabled
@@ -557,21 +538,18 @@ service msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.
     user root
     group root
     disabled
-    seclabel u:r:msm_irqbalanced:s0
 
 service msm_irqbal_lb /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance_little_big.conf
     class core
     user root
     group root
     disabled
-    seclabel u:r:msm_irqbalanced:s0
 
 service time_daemon /vendor/bin/time_daemon
     class main
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:time_daemon:s0
 
 on property:sys.boot_completed=1
     start cs-post-boot
