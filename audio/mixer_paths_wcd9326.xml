@@ -2091,7 +2091,10 @@
     </path>
 
     <path name="voice-speaker">
+    	<!-- xuke @ 20150911 Change wsa to normal.
         <path name="wsa-speaker-mono" />
+        -->
+        <path name="speaker" />
     </path>
 
     <path name="voice-speaker-2">
