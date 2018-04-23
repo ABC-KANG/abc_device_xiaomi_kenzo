@@ -124,6 +124,14 @@ PRODUCT_PACKAGES += \
     qcom.fmradio.xml
 
 # GPS
+PRODUCT_PACKAGES += \
+    libgnss \
+    libgps.utils \
+    libloc_core \
+    libloc_pla \
+    libloc_stub \
+    liblocation_api
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
     $(LOCAL_PATH)/configs/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
